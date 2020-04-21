@@ -3,8 +3,8 @@ package twitter
 
 //Twitter defines the social media platform Twitter
 type Twitter struct {
-	Title string `xml:"1" json:"1"`
-	Feeds string `xml:"2" json:"2"`
+	Title string `xml:"1" json:"1" yaml:"1"`
+	Feeds string `xml:"2" json:"2" yaml:"2"`
 }
 
 //Tweet is an instance of the Twitter struct

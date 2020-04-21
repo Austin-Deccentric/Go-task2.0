@@ -3,8 +3,8 @@ package facebook
 
 //Facebook is a mock type containing basic Info to fufill this learning stage
 type Facebook struct {
-	Title string	`xml:"1" json:"1"`
-	Feeds string	`xml:"2" json:"2"`
+	Title string	`xml:"1" json:"1" yaml:"1"`
+	Feeds string	`xml:"2" json:"2" yaml:"2"`
 }
 
 //Fb is an instance of the Facebook struct

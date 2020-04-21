@@ -8,6 +8,7 @@ import (
 	"os"
 	"sme"
 	"strings"
+	"gopkg.in/yaml.v2"
 )
 
 
@@ -70,8 +71,26 @@ func Export(platform sme.SocialMedia, filename string) error{
 	fmt.Printf("Wrote %d bytes\n", n)
 	defer f.Close()
 
+	}else if strings.HasSuffix(filename, "yaml"){
+		f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
+	if err != nil {
+		return err
+	}
+
+	yamldata, err := yaml.Marshal(platform)
+	if err != nil {
+		return err
+	}
+
+	n, err := f.WriteString(string(yamldata) + "\n")
+	if err != nil {
+		return err
+	}
+	fmt.Printf("Wrote %d bytes\n", n)
+	defer f.Close()
 	}else{
 		log.Fatal("This file format is not supported at the moment")
+
 	}
 
 	return nil
