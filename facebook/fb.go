@@ -10,7 +10,7 @@ type Facebook struct {
 //Fb is an instance of the Facebook struct
 var Fb  *Facebook  = &Facebook{
 	Title: "Facebook feeds",
-	Feeds: "Hey, here's my cool new selfie",
+	Feeds: "Hey, here is my cool new selfie",
 }
 
 
