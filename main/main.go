@@ -17,20 +17,11 @@ func check(e error) {
 
 func main() {
 
-	tweets  := &twitter.Twitter{
-		Title: "Twitter Timeline",
-		Feeds: "Men are trash",
-	}
+	tweets := new(twitter.Twitter)
 
- 	linked := &linkedin.LinkedIn{
-	Title: "LinkedIn Feeds",
-	Feeds: "I just got a job at Google!",
-	}
+ 	linked := new(linkedin.LinkedIn)
 	
- 	facebook  := &facebook.Facebook{
-	Title: "Facebook feeds",
-	Feeds: "Hey, here is my cool new selfie",
-}
+ 	facebook := new(facebook.Facebook)
 
 	err := exporter.Exporttxt(facebook,"fb_data.txt")
 	check(err)

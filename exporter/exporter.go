@@ -41,7 +41,14 @@ func Exportjson(platform sme.SocialMedia, filename string) error{
 	}
 	defer f.Close()
 
-	jsondata, err := json.Marshal(platform)
+	feeds:= platform.Feed()
+	feedsmap:= make(map[int]interface{})
+	for n, feed := range feeds{
+		n++
+		feedsmap[n] = feed
+	}
+
+	jsondata, err := json.Marshal(feedsmap)
 	if err != nil {
 		return err
 	}
@@ -64,7 +71,8 @@ func Exportxml(platform sme.SocialMedia, filename string) error{
 	}
 	defer f.Close()
 
-	xmldata, err := xml.MarshalIndent(platform, " ", "  ")
+	feeds := platform.Feed()
+	xmldata, err := xml.MarshalIndent(feeds, " ", "  ")
 	if err != nil {
 		return err
 	}
@@ -85,7 +93,9 @@ func Exportxml(platform sme.SocialMedia, filename string) error{
 	}
 	defer f.Close()
 
-	yamldata, err := yaml.Marshal(platform)
+	feeds :=platform.Feed()
+
+	yamldata, err := yaml.Marshal(feeds)
 	if err != nil {
 		return err
 	}

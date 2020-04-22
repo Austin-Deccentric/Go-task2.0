@@ -11,7 +11,7 @@ type Facebook struct {
 func (f *Facebook) Feed() []string {
 	return []string{
 		"Facebook feeds",
-		"Hey, here's my cool new selfie",
+		"Hey, here is my cool new selfie",
 		"What is code?",
 	}
 }
