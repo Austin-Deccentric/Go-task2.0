@@ -17,40 +17,55 @@ func check(e error) {
 
 func main() {
 
-	err := exporter.Exporttxt(facebook.Fb,"fb_data.txt")
+	Tweets  := &twitter.Twitter{
+		Title: "Twitter Timeline",
+		Feeds: "Men are trash",
+	}
+
+ 	Linked := &linkedin.LinkedIn{
+	Title: "LinkedIn Feeds",
+	Feeds: "I just got a job at Google!",
+	}
+	
+ 	Fb  := &facebook.Facebook{
+	Title: "Facebook feeds",
+	Feeds: "Hey, here is my cool new selfie",
+}
+
+	err := exporter.Exporttxt(Fb,"fb_data.txt")
 	check(err)
 
-	err = exporter.Exportjson(facebook.Fb, "fbdata.json")
+	err = exporter.Exportjson(Fb, "fbdata.json")
 	check(err)
 
-	err = exporter.Exportxml(facebook.Fb,"fb_data.xml")
+	err = exporter.Exportxml(Fb,"fb_data.xml")
 	check(err)
 
-	err = exporter.Exportyaml(facebook.Fb,"fb_data.yaml")
+	err = exporter.Exportyaml(Fb,"fb_data.yaml")
 	check(err)
 
-	err = exporter.Exporttxt(twitter.Tweet, "tweet_data.txt")
+	err = exporter.Exporttxt(Tweets, "tweet_data.txt")
 	check(err)
 
-	err = exporter.Exportjson(twitter.Tweet,"twitter_data.json")
+	err = exporter.Exportjson(Tweets,"twitter_data.json")
 	check(err)
 
-	err = exporter.Exportxml(twitter.Tweet, "twitter_data.xml")
+	err = exporter.Exportxml(Tweets, "twitter_data.xml")
 	check(err)
 
-	err = exporter.Exportyaml(twitter.Tweet, "twitter_data.yaml")
+	err = exporter.Exportyaml(Tweets, "twitter_data.yaml")
 	check(err)
 
-	err = exporter.Exporttxt(linkedin.Linked, "LinkedIn_data.txt")
+	err = exporter.Exporttxt(Linked, "LinkedIn_data.txt")
 	check(err)
 
-	err = exporter.Exportjson(linkedin.Linked,"LinkedIn_data.json")
+	err = exporter.Exportjson(Linked,"LinkedIn_data.json")
 	check(err)
 
-	err = exporter.Exportxml(linkedin.Linked,"LinkedIn_data.xml")
+	err = exporter.Exportxml(Linked,"LinkedIn_data.xml")
 	check(err)
 
-	err = exporter.Exportyaml(linkedin.Linked,"LinkedIn_data.yaml")
+	err = exporter.Exportyaml(Linked,"LinkedIn_data.yaml")
 	check(err)
 
 }

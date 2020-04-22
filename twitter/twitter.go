@@ -7,14 +7,6 @@ type Twitter struct {
 	Feeds string `xml:"2" json:"2" yaml:"2"`
 }
 
-//Tweet is an instance of the Twitter struct
-var Tweet  *Twitter = &Twitter{
-	Title: "Twitter Timeline",
-	Feeds: "Men are trash",
-}
-
-
-
 // Feed returns the latest Twitter posts
 func (t *Twitter) Feed() []string {
 	return []string{

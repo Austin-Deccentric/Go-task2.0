@@ -18,13 +18,14 @@ func Exporttxt(platform sme.SocialMedia, filename string) error{
 	if err != nil {
 		return err
 	}
-
+	defer f.Close()
+	
 	for _, feed := range platform.Feed() {
 		n, err := f.WriteString(feed + "\n")
 		if err != nil {
 			return err
 		}
-		defer f.Close()
+		
 		fmt.Printf("Wrote %d bytes\n",n)
 	}
 	

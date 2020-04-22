@@ -7,12 +7,6 @@ type LinkedIn struct {
 	Feeds string `xml:"2" json:"2" yaml:"2"`
 }
 
-//Linked is an instance of LinkedIn struct
-var Linked *LinkedIn = &LinkedIn{
-	Title: "LinkedIn Feeds",
-	Feeds: "I just got a job at Google!",
-}
-
 // Feed returns the latest LinkedIn posts
 func (l *LinkedIn) Feed() []string {
 	return []string{
