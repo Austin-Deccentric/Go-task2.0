@@ -17,40 +17,40 @@ func check(e error) {
 
 func main() {
 
-	err := exporter.Export(facebook.Fb,"fb_data.txt")
+	err := exporter.Exporttxt(facebook.Fb,"fb_data.txt")
 	check(err)
 
-	err = exporter.Export(facebook.Fb, "fbdata.json")
+	err = exporter.Exportjson(facebook.Fb, "fbdata.json")
 	check(err)
 
-	err = exporter.Export(facebook.Fb,"fb_data.xml")
+	err = exporter.Exportxml(facebook.Fb,"fb_data.xml")
 	check(err)
 
-	err = exporter.Export(facebook.Fb,"fb_data.yaml")
+	err = exporter.Exportyaml(facebook.Fb,"fb_data.yaml")
 	check(err)
 
-	err = exporter.Export(twitter.Tweet, "tweet_data.txt")
+	err = exporter.Exporttxt(twitter.Tweet, "tweet_data.txt")
 	check(err)
 
-	err = exporter.Export(twitter.Tweet,"twitter_data.json")
+	err = exporter.Exportjson(twitter.Tweet,"twitter_data.json")
 	check(err)
 
-	err = exporter.Export(twitter.Tweet, "twitter_data.xml")
+	err = exporter.Exportxml(twitter.Tweet, "twitter_data.xml")
 	check(err)
 
-	err = exporter.Export(twitter.Tweet, "twitter_data.yaml")
+	err = exporter.Exportyaml(twitter.Tweet, "twitter_data.yaml")
 	check(err)
 
-	err = exporter.Export(linkedin.Linked, "LinkedIn_data.txt")
+	err = exporter.Exporttxt(linkedin.Linked, "LinkedIn_data.txt")
 	check(err)
 
-	err = exporter.Export(linkedin.Linked,"LinkedIn_data.json")
+	err = exporter.Exportjson(linkedin.Linked,"LinkedIn_data.json")
 	check(err)
 
-	err = exporter.Export(linkedin.Linked,"LinkedIn_data.xml")
+	err = exporter.Exportxml(linkedin.Linked,"LinkedIn_data.xml")
 	check(err)
 
-	err = exporter.Export(linkedin.Linked,"LinkedIn_data.yaml")
+	err = exporter.Exportyaml(linkedin.Linked,"LinkedIn_data.yaml")
 	check(err)
 
 }
