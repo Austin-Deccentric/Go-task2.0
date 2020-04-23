@@ -3,6 +3,7 @@ package exporter
 import (
 	"encoding/json"
 	"encoding/xml"
+	"errors"
 	"fmt"
 	"os"
 	"sme"
@@ -16,14 +17,14 @@ import (
 func Exporttxt(platform sme.SocialMedia, filename string) error{
 	f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
 	if err != nil {
-		return err
+		return errors.New("An error occured opening the file: " + err.Error())
 	}
 	defer f.Close()
 	
 	for _, feed := range platform.Feed() {
 		n, err := f.WriteString(feed + "\n")
 		if err != nil {
-			return err
+		return errors.New("An error occured writing to file" + err.Error())
 		}
 		
 		fmt.Printf("Wrote %d bytes\n",n)
@@ -37,7 +38,7 @@ func Exporttxt(platform sme.SocialMedia, filename string) error{
 func Exportjson(platform sme.SocialMedia, filename string) error{
 	f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
 	if err != nil {
-		return err
+		return errors.New("An error occured opening the file: " + err.Error())
 	}
 	defer f.Close()
 
@@ -50,12 +51,12 @@ func Exportjson(platform sme.SocialMedia, filename string) error{
 
 	jsondata, err := json.Marshal(feedsmap)
 	if err != nil {
-		return err
+		return errors.New("an error occured during encoding: " + err.Error())
 	}
 
 	n, err := f.WriteString(string(jsondata) + "\n")
 	if err != nil {
-		return err
+		return errors.New("An error occured writing to file" + err.Error())
 	}
 	fmt.Printf("Wrote %d bytes\n", n)
 	
@@ -67,19 +68,19 @@ func Exportjson(platform sme.SocialMedia, filename string) error{
 func Exportxml(platform sme.SocialMedia, filename string) error{
 	f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
 	if err != nil {
-		return err
+		return errors.New("An error occured opening the file: " + err.Error())
 	}
 	defer f.Close()
 
 	feeds := platform.Feed()
 	xmldata, err := xml.MarshalIndent(feeds, " ", "  ")
 	if err != nil {
-		return err
+		return errors.New("an error occured during encoding: " + err.Error())
 	}
 
 	n, err := f.WriteString(string(xmldata) + "\n"+ "\n")
 	if err != nil {
-		return err
+		return errors.New("An error occured writing to file" + err.Error())
 	}
 
 	fmt.Printf("Wrote %d bytes\n", n)
@@ -89,7 +90,7 @@ func Exportxml(platform sme.SocialMedia, filename string) error{
 	func Exportyaml(platform sme.SocialMedia, filename string) error{
 		f, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0755)
 	if err != nil {
-		return err
+		return errors.New("An error occured opening the file: " + err.Error())
 	}
 	defer f.Close()
 
@@ -97,12 +98,12 @@ func Exportxml(platform sme.SocialMedia, filename string) error{
 
 	yamldata, err := yaml.Marshal(feeds)
 	if err != nil {
-		return err
+		return errors.New("an error occured during encoding: " + err.Error())
 	}
 
 	n, err := f.WriteString(string(yamldata) + "\n")
 	if err != nil {
-		return err
+		return errors.New("An error occured writing to file" + err.Error())
 	}
 	fmt.Printf("Wrote %d bytes\n", n)
 	
